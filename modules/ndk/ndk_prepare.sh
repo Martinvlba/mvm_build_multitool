@@ -1,27 +1,34 @@
 ndk_prepare_env() {
     message "Preparing initial android environment"
 
-    mkdir -p ${ANDROID_DEV_ENV}/{ndk,build_tools}
+    mkdir -p ${ANDROID_DEV_ENV}/{ndk,build_tools,tmp}
     mkdir -p ${ANDROID_OUT}
 }
 
 ndk_download_ndk() {
     message "Downloading NDK"
-    wget ${ANDROID_NDK_LINK} -O ${ANDROID_OUT}/ndk-${ANDROID_NDK_VERSION}.zip.partial_download
-    mv ${ANDROID_OUT}/ndk-$ANDROID_NDK_VERSION.zip.partial_download ${ANDROID_OUT}/ndk-$ANDROID_NDK_VERSION.zip
+    if [ ! -f ${ANDROID_OUT}/ndk-$ANDROID_NDK_VERSION.zip ]; then
+        wget ${ANDROID_NDK_LINK} -O ${ANDROID_OUT}/ndk-${ANDROID_NDK_VERSION}.zip.partial_download
+        mv ${ANDROID_OUT}/ndk-$ANDROID_NDK_VERSION.zip.partial_download ${ANDROID_OUT}/ndk-$ANDROID_NDK_VERSION.zip
+    fi
 }
 
 ndk_download_sdk() {
     message "Downloading SDK"
-    wget ${ANDROID_SDK_BUILD_TOOL_LINK} -O ${ANDROID_OUT}/build_tools-${ANDROID_SDK_BUILD_TOOL_VERSION}.zip.partial_download
-    mv ${ANDROID_OUT}/build_tools-${ANDROID_SDK_BUILD_TOOL_VERSION}.zip.partial_download ${ANDROID_OUT}/build_tools-${ANDROID_SDK_BUILD_TOOL_VERSION}.zip
+    if [ ! -f ${ANDROID_OUT}/build_tools-${ANDROID_SDK_BUILD_TOOL_VERSION}.zip ]; then
+        wget ${ANDROID_SDK_BUILD_TOOL_LINK} -O ${ANDROID_OUT}/build_tools-${ANDROID_SDK_BUILD_TOOL_VERSION}.zip.partial_download
+        mv ${ANDROID_OUT}/build_tools-${ANDROID_SDK_BUILD_TOOL_VERSION}.zip.partial_download ${ANDROID_OUT}/build_tools-${ANDROID_SDK_BUILD_TOOL_VERSION}.zip
+    fi
 }
 
 ndk_install_ndk() {
     ndk_zip="${ANDROID_OUT}/ndk-$ANDROID_NDK_VERSION.zip"
 
     message "Unzipping NDK"
-    unzip -q $ndk_zip -d ${ANDROID_NDK}
+    unzip -q $ndk_zip -d ${ANDROID_DEV_ENV}/tmp
+
+    cp -rf ${ANDROID_DEV_ENV}/tmp/android-ndk-r30/* ${ANDROID_NDK}
+    rm -rf ${ANDROID_DEV_ENV}/tmp/android-ndk-r30
 }
 
 ndk_install_sdk() {
