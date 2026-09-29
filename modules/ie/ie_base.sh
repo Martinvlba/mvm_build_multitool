@@ -8,7 +8,7 @@ precheck_ie() {
 
     # Copy over bashrc
     if [ ! -f ${MT_DEV_FOLDER}/$(whoami)/bashrc ]; then
-        touch ${MT_DEV_FOLDER}/$(whoami)/bashrc
+        cp -fv ${MT_BASE_DIR}/developer/bashrc ${MT_DEV_FOLDER}/$(whoami)/bashrc
     fi
 
     # Create History file
