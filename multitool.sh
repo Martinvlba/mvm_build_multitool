@@ -18,5 +18,5 @@ source $MT_BASE_DIR/modules/global_exports.sh
 source $MT_BASE_DIR/modules/other/message_types.sh
 
 # Load everything else by loader
-source $MT_BASE_DIR/modules/load_scripts.sh
+source $MT_BASE_DIR/env/load_scripts.sh
 
