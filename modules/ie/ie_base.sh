@@ -6,20 +6,24 @@
 precheck_ie() {
     mkdir -p ${MT_DEV_FOLDER}/$(whoami)
 
-    if [ ! -f ${MT_DEV_FOLDER}/base/bashrc ]; then
-        touch ${MT_DEV_FOLDER}/base/bashrc
+    # Copy over bashrc
+    if [ ! -f ${MT_DEV_FOLDER}/$(whoami)/bashrc ]; then
+        touch ${MT_DEV_FOLDER}/$(whoami)/bashrc
+    fi
+
+    # Create History file
+    if [ ! -f ${MT_DEV_FOLDER}/$(whoami)/.bash_history ]; then
+        touch ${MT_DEV_FOLDER}/$(whoami)/.bash_history
     fi
 }
 
 start_ie() {
-    msg_info "$(whoami) special bashrcc -> ${MT_DEV_FOLDER}/base/bashrc"
+    msg_info "$(whoami) special bashrcc -> ${MT_DEV_FOLDER}/$(whoami)/bashrc"
 
-    subshell=true bash --rcfile ${MT_DEV_FOLDER}/base/bashrc
+    subshell=true bash --rcfile ${MT_DEV_FOLDER}/$(whoami)/bashrc
 }
 
 spawn_ie() {
-    trap - SIGINT INT
-    trap - ERR
     set +e
 
     precheck_ie

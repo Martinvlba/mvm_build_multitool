@@ -1,0 +1,22 @@
+# Pull user bashrc
+source ~/.bashrc
+
+# Clear trap and disable exit on error
+trap - SIGINT INT
+trap - ERR
+set +e
+
+# Set user specific history file
+export HISTFILE="${MT_DEV_FOLDER}/$(whoami)/.bash_history"
+
+# Also source aliases
+source ${MT_BASE_DIR}/developer/alias.conf
+
+clear
+
+# Overwrite PS1 so dev knows we are in interactive shell
+export PS1='\[\e[1;32m\]multitool [ \[\e[0m\]\w\[\e[1;32m\] ]$ \[\e[0m\]'
+
+echo "Loading environment..."
+source ${MT_BASE_DIR}/env/load_scripts.sh > /dev/null
+echo "Environment loaded"
