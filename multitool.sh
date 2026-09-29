@@ -14,9 +14,6 @@ fi
 export MT_BASE_DIR="$(pwd)/build/multitool"
 export MT_MVM_BASE="$(pwd)"
 
-source $MT_BASE_DIR/modules/global_exports.sh
-source $MT_BASE_DIR/modules/other/message_types.sh
-
 # Load everything else by loader
 source $MT_BASE_DIR/env/load_scripts.sh
 
