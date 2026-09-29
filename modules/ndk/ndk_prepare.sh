@@ -31,8 +31,18 @@ ndk_install_sdk() {
     unzip -q $bldt_zip -d ${ANDROID_BUILD_TOOL}
 }
 
-ndk_setup_rootfs() {
+ndk_setup_sysroot() {
+    message "Re-creating sysroot"
+    mkdir -p ${ANDROID_SYSROOT}/lib
 
+    # Copy includes
+    cp -rf ${ANDROID_RAW_SYSROOT}/include ${ANDROID_SYSROOT}
+
+    # Create proper lib structure
+    cp -rf ${ANDROID_RAW_SYSROOT}/lib/aarch64-linux-android/*.a ${ANDROID_SYSROOT}/lib/
+    cp -rf ${ANDROID_RAW_SYSROOT}/lib/aarch64-linux-android/*.o ${ANDROID_SYSROOT}/lib/
+    cp -rf ${ANDROID_RAW_SYSROOT}/lib/aarch64-linux-android/*.so ${ANDROID_SYSROOT}/lib/
+    cp -rf ${ANDROID_RAW_SYSROOT}/lib/aarch64-linux-android/${ANDROID_TARGET_API}/* ${ANDROID_SYSROOT}/lib/
 }
 
 ndk_health_check() {
@@ -55,16 +65,7 @@ ndk_health_check() {
         ndk_install_sdk
     fi
 
-    #       ${ANDROID_RAW_SYSROOT}
-    message "Re-creating sysroot"
-    mkdir -p ${ANDROID_SYSROOT}/lib
+    ndk_setup_sysroot
 
-    # Copy includes
-    cp -rf ${ANDROID_RAW_SYSROOT}/include ${ANDROID_SYSROOT}
-
-    # Create proper lib structure
-    cp -rf ${ANDROID_RAW_SYSROOT}/lib/aarch64-linux-android/*.a ${ANDROID_SYSROOT}/lib/
-    cp -rf ${ANDROID_RAW_SYSROOT}/lib/aarch64-linux-android/*.o ${ANDROID_SYSROOT}/lib/
-    cp -rf ${ANDROID_RAW_SYSROOT}/lib/aarch64-linux-android/*.so ${ANDROID_SYSROOT}/lib/
-    cp -rf ${ANDROID_RAW_SYSROOT}/lib/aarch64-linux-android/${ANDROID_TARGET_API}/* ${ANDROID_SYSROOT}/lib/
+    message "Android dev env has been set up"
 }
