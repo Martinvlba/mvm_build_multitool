@@ -2,7 +2,7 @@
 # Main functions for MT
 ##
 
-help() {
+mt_help() {
     message "###"
     message "# Help menu"
     message "###"
