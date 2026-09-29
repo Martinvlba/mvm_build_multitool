@@ -4,8 +4,10 @@
 
 mt_help() {
     message "###"
-    message "# Help menu"
+    message "# HELP MENU"
+    message "# VERSION: ${MT_VERSION}"
     message "###"
     spacer
-    message "$ help : Shows this help menu"
+    message "$ help          : Shows this help menu"
+    message "$ setup_android : Check and set up android essentials"
 }
