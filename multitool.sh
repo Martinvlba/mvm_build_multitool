@@ -20,3 +20,4 @@ source $MT_BASE_DIR/modules/other/message_types.sh
 # Load everything else by loader
 source $MT_BASE_DIR/env/load_scripts.sh
 
+spawn_ie
