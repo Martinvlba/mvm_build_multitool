@@ -11,4 +11,6 @@ mt_help() {
     message "$ help          : Shows this help menu"
     message "$ setup_android : Check and set up android essentials"
     message "$ mvm_meson     : Wrapper for meson with required args pre-added"
+    message "$ mvm_cmake     : Wrapper for cmake with required args pre-added"
+    message "$ mvm_configure : Wrapper for configure with required args pre-added"
 }
