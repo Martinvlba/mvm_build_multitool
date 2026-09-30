@@ -34,5 +34,9 @@ spawn_ie() {
 }
 
 reload() {
-    unimplemented
+    source $MT_BASE_DIR/env/load_scripts.sh
+
+    spawn_ie
+
+    exit 0
 }

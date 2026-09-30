@@ -1,3 +1,7 @@
+##
+# Prepare and check for ndk/sdk
+##
+
 ndk_prepare_env() {
     message "Preparing initial android environment"
 
