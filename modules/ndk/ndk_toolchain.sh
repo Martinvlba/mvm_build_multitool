@@ -10,6 +10,7 @@ mvm_meson() {
     else
         meson \
         --buildtype=release \
+        --prefix=${ANDROID_ROOTFS} \
         --cross-file ${MT_BASE_DIR}/developer/cross_android.conf \
         ${@}
     fi
@@ -22,6 +23,7 @@ mvm_cmake() {
         msg_info '$ mvm_cmake --example=enable ../source_code'
     else
         cmake \
+        -D CMAKE_INSTALL_PREFIX=${ANDROID_ROOTFS} \
         -D CMAKE_TOOLCHAIN_FILE=${ANDROID_SYSROOT}/etc/cross_android.cmake \
         ${@}
     fi
