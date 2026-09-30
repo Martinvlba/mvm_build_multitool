@@ -10,7 +10,7 @@ mvm_meson() {
     else
         meson \
         --buildtype=release \
-        --cross-file ${MT_BASE_DIR}/developer/cross.txt \
+        --cross-file ${MT_BASE_DIR}/developer/cross_android.conf \
         ${@}
     fi
 }
