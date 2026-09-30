@@ -45,7 +45,7 @@ export ANDROID_SDK_BUILD_TOOL_LINK="${ANDROID_REPO}/${ANDROID_SDK_BUILD_TOOL_FIL
 # export toolchain
 export CFLAGS=" -isystem ${ANDROID_SYSROOT}/include -fPIC -Oz"
 export CPPFLAGS=" -fPIC"
-export LDFLAGS=" -L${ANDROID_SYSROOT}/lib -Wl,-rpath=${ANDROID_ROOTFS}/lib -Wl,--no-as-needed,-landroid-support,--as-needed -Wl,--enable-new-dtags -Wl,--as-needed"
+export LDFLAGS=" -L${ANDROID_SYSROOT}/lib -Wl,-rpath=${ANDROID_ROOTFS}/lib -Wl,--enable-new-dtags -Wl,--as-needed"
 export AS=$ANDROID_HOST_PLATFORM-clang
 export CC=$ANDROID_HOST_PLATFORM-clang
 export CPP=$ANDROID_HOST_PLATFORM-cpp
