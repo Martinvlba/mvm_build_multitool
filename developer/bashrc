@@ -13,7 +13,7 @@ export HISTFILE="${MT_DEV_FOLDER}/$(whoami)/.bash_history"
 source ${MT_BASE_DIR}/developer/alias.conf
 
 # Add ndk toolchain binaries to PATH
-export PATH=${ANDROID_NDK_TOOLCHAIN}:${ANDROID_SDK_TOOLS}:$PATH
+export PATH=${MT_BASE_DIR}/scripts:${ANDROID_NDK_TOOLCHAIN}:${ANDROID_SDK_TOOLS}:$PATH
 
 clear
 
