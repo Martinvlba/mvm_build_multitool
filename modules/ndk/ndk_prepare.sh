@@ -27,15 +27,18 @@ ndk_install_ndk() {
     message "Unzipping NDK"
     unzip -q $ndk_zip -d ${ANDROID_DEV_ENV}/tmp
 
-    cp -rf ${ANDROID_DEV_ENV}/tmp/android-ndk-r30/* ${ANDROID_NDK}
-    rm -rf ${ANDROID_DEV_ENV}/tmp/android-ndk-r30
+    cp -rf ${ANDROID_DEV_ENV}/tmp/android-ndk-r${ANDROID_NDK_VERSION}/* ${ANDROID_NDK}
+    rm -rf ${ANDROID_DEV_ENV}/tmp/android-ndk-r${ANDROID_NDK_VERSION}
 }
 
 ndk_install_sdk() {
     bldt_zip="${ANDROID_OUT}/build_tools-${ANDROID_SDK_BUILD_TOOL_VERSION}.zip"
 
     message "Unzipping Build Tools"
-    unzip -q $bldt_zip -d ${ANDROID_BUILD_TOOL}
+    unzip -q $bldt_zip -d ${ANDROID_DEV_ENV}/tmp
+
+    cp -rf ${ANDROID_DEV_ENV}/tmp/android-${ANDROID_VERSION}/* ${ANDROID_BUILD_TOOL}
+    rm -rf ${ANDROID_DEV_ENV}/tmp/android-${ANDROID_VERSION}
 }
 
 ndk_setup_sysroot() {
@@ -50,6 +53,9 @@ ndk_setup_sysroot() {
     cp -rf ${ANDROID_RAW_SYSROOT}/lib/aarch64-linux-android/*.o ${ANDROID_SYSROOT}/lib/
     cp -rf ${ANDROID_RAW_SYSROOT}/lib/aarch64-linux-android/*.so ${ANDROID_SYSROOT}/lib/
     cp -rf ${ANDROID_RAW_SYSROOT}/lib/aarch64-linux-android/${ANDROID_TARGET_API}/* ${ANDROID_SYSROOT}/lib/
+
+    # Additional changes for include
+    cp -rf ${ANDROID_SYSROOT}/include/aarch64-linux-android/asm ${ANDROID_RAW_SYSROOT}/include
 }
 
 ndk_health_check() {

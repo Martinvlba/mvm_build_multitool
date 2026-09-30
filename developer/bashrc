@@ -12,6 +12,9 @@ export HISTFILE="${MT_DEV_FOLDER}/$(whoami)/.bash_history"
 # Also source aliases
 source ${MT_BASE_DIR}/developer/alias.conf
 
+# Add ndk toolchain binaries to PATH
+export PATH=${ANDROID_NDK_TOOLCHAIN}:${ANDROID_SDK_TOOLS}:$PATH
+
 clear
 
 # Overwrite PS1 so dev knows we are in interactive shell

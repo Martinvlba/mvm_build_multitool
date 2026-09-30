@@ -28,6 +28,8 @@ export ANDROID_RAW_SYSROOT=${ANDROID_NDK}/toolchains/llvm/prebuilt/linux-x86_64/
 export ANDROID_SYSROOT=${ANDROID_DEV_ENV}/sysroot
 export ANDROID_BUILD_TOOL=${ANDROID_DEV_ENV}/build_tools
 export ANDROID_REPO=https://dl.google.com/android/repository
+export ANDROID_NDK_TOOLCHAIN=${ANDROID_NDK}/toolchains/llvm/prebuilt/linux-x86_64/bin
+export ANDROID_SDK_TOOLS=${ANDROID_SDK}
 
 # NDK 30.0.16248370
 export ANDROID_NDK_VERSION=30
