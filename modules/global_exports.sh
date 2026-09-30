@@ -7,21 +7,23 @@
 export MT_VERSION=0.0.0.0.1 # Versioning
 export MT_IS_IE=false # By default false
 export MT_DEV_FOLDER=$MT_MVM_BASE/developer
-export MVM_OUT=${MT_MVM_BASE}
+export MVM_OUT=${MT_MVM_BASE}/out
+export MVM_SOURCE=${MT_MVM_BASE}/source
 
 ##
 # ANDROID SPECIFIC
 ##
 
-export ANDROID_ROOTFS=$MVM_OUT/out/rootfs
+export ANDROID_ROOTFS=$MVM_OUT/rootfs
 
 # Target API ( Always keep it MVM min api level, only bump if app min level has changed! )
 export ANDROID_TARGET_API=35
 export ANDROID_VERSION=15
+export ANDROID_ABI=aarch64
 export ANDROID_HOST_PLATFORM=aarch64-linux-android${ANDROID_TARGET_API}
 
 # Misc links and paths for toolset
-export ANDROID_OUT=${MT_MVM_BASE}/out/android
+export ANDROID_OUT=${MT_MVM_BASE}/android
 export ANDROID_DEV_ENV=${MT_MVM_BASE}/developer/android
 export ANDROID_SDK=${ANDROID_DEV_ENV}/sdk
 export ANDROID_NDK=${ANDROID_DEV_ENV}/ndk

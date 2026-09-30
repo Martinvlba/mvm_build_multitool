@@ -47,7 +47,10 @@ ndk_install_sdk() {
 
 ndk_setup_sysroot() {
     message "Re-creating sysroot"
-    mkdir -p ${ANDROID_SYSROOT}/lib
+    mkdir -p ${ANDROID_SYSROOT}/{lib,etc}
+
+    cp -f ${MT_BASE_DIR}/developer/cross_android.cmake ${ANDROID_SYSROOT}/etc/cross_android.cmake
+    sed -i "s/REPLACEME/${ANDROID_ROOTFS}/g" ${ANDROID_SYSROOT}/etc/cross_android.cmake
 
     # Copy includes
     cp -rf ${ANDROID_RAW_SYSROOT}/include ${ANDROID_SYSROOT}
