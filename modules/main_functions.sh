@@ -10,4 +10,5 @@ mt_help() {
     spacer
     message "$ help          : Shows this help menu"
     message "$ setup_android : Check and set up android essentials"
+    message "$ mvm_meson     : Wrapper for meson with required args pre-added"
 }
