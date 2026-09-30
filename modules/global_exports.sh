@@ -18,6 +18,7 @@ export ANDROID_ROOTFS=$MVM_OUT/out/rootfs
 # Target API ( Always keep it MVM min api level, only bump if app min level has changed! )
 export ANDROID_TARGET_API=35
 export ANDROID_VERSION=15
+export ANDROID_HOST_PLATFORM=aarch64-linux-android${ANDROID_TARGET_API}
 
 # Misc links and paths for toolset
 export ANDROID_OUT=${MT_MVM_BASE}/out/android
@@ -40,3 +41,24 @@ export ANDROID_NDK_LINK="${ANDROID_REPO}/${ANDROID_NDK_FILE}"
 export ANDROID_SDK_BUILD_TOOL_VERSION=35.0.1
 export ANDROID_SDK_BUILD_TOOL_FILE="build-tools_r${ANDROID_SDK_BUILD_TOOL_VERSION}_linux.zip"
 export ANDROID_SDK_BUILD_TOOL_LINK="${ANDROID_REPO}/${ANDROID_SDK_BUILD_TOOL_FILE}"
+
+# export toolchain
+export CFLAGS=" -isystem ${ANDROID_SYSROOT}/include -fPIC -Oz"
+export CPPFLAGS=" -fPIC"
+export LDFLAGS=" -L${ANDROID_SYSROOT}/lib -Wl,-rpath=${ANDROID_ROOTFS}/lib -Wl,--no-as-needed,-landroid-support,--as-needed -Wl,--enable-new-dtags -Wl,--as-needed"
+export AS=$ANDROID_HOST_PLATFORM-clang
+export CC=$ANDROID_HOST_PLATFORM-clang
+export CPP=$ANDROID_HOST_PLATFORM-cpp
+export CXX=$ANDROID_HOST_PLATFORM-clang++
+export LD=ld.lld
+export AR=llvm-ar
+export OBJCOPY=llvm-objcopy
+export OBJDUMP=llvm-objdump
+export RANLIB=llvm-ranlib
+export READELF=llvm-readelf
+export STRIP=llvm-strip
+export NM=llvm-nm
+export CXXFILT=llvm-cxxfilt
+
+# pkg-config
+export PKG_CONFIG_PATH=${ANDROID_ROOTFS}/lib/pkgconfig

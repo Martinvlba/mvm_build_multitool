@@ -10,3 +10,4 @@ source $MT_BASE_DIR/modules/ie/ie_base.sh
 
 # Android components
 source $MT_BASE_DIR/modules/ndk/ndk_prepare.sh
+source $MT_BASE_DIR/modules/ndk/ndk_toolchain.sh

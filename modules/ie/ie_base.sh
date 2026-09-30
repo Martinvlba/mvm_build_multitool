@@ -4,7 +4,7 @@
 
 # Manage developer accounts
 precheck_ie() {
-    mkdir -p ${MT_DEV_FOLDER}/$(whoami)
+    mkdir -p ${MT_DEV_FOLDER}/$(whoami)/bin
 
     # Copy over bashrc
     if [ ! -f ${MT_DEV_FOLDER}/$(whoami)/bashrc ]; then
@@ -18,8 +18,6 @@ precheck_ie() {
 }
 
 start_ie() {
-    msg_info "$(whoami) special bashrcc -> ${MT_DEV_FOLDER}/$(whoami)/bashrc"
-
     subshell=true bash --rcfile ${MT_DEV_FOLDER}/$(whoami)/bashrc
 }
 

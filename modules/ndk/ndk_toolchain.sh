@@ -2,10 +2,8 @@
 # Configurations for android toolchain
 ##
 
-# export toolchain
+setup_toolchain() {
+    # Compile and install android support libraries
 
-
-# pkg-config hacks
-
-
-# Qemu system emulation for aarch64 android bionic ( Sometimes some sources wanna run compiled bins that use now targeted bionic libc )
+    unimplemented
+}
